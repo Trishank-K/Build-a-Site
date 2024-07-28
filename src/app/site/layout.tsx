@@ -1,10 +1,17 @@
-import React from "react";
-import Navigation from "@/components/site/Navigation";
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
-  return <main className="h-full">
-    <Navigation/>
-    {children}
-    </main>;
-};
+import { ClerkProvider } from '@clerk/nextjs'
+import Navigation from '@/components/site/Navigation'
+import { dark } from '@clerk/themes'
+import React from 'react'
 
-export default AuthLayout;
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ClerkProvider appearance={{ baseTheme: dark }}>
+      <main className="h-full">
+        <Navigation />
+        {children}
+      </main>
+    </ClerkProvider>
+  )
+}
+
+export default Layout
